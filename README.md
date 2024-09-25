@@ -10,7 +10,9 @@
 ### 1) Strings - Store and Retreive.
 
 ```redis
-SET message 'Hi there!'
+SET message 'Hi there!' # Set a key message with value 'Hi There!'
 
-GET message
+GET message # Get the value of a key named message.
+
+SET message green GET # Set the key message to green and Get previous value
 ```
