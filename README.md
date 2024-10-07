@@ -19,4 +19,12 @@ SET message green GET # Set the key message to green and Get previous value
 SET existingKey 'value' XX # Set existingKey to 'value' if and only if the key exists already.
 
 SET newKey 'value' NX # Set newKey to 'value' if and only if the key doesn't exist already.
+
+SET color red EX 2 # Set color to red and expire it after 2 secs.
+
+MSET color red car toyota # set multiple key value pairs at the same time.
+
+MGET key1 key2 key2 # get values for multiple keys in a single command.
+
+DEL color # Delete a key and associated value.
 ```
