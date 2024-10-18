@@ -42,3 +42,31 @@ DECR age # Decrment age by 1.
 INCRBY age 10 # Increment age by 10
 DECRBY age 10 # Decrement age by 10
 ```
+
+### 3) Hash
+
+```redis
+# Purpose is to store a hastable of sorts against a key.
+# Important to note that redis doesn't allow nested hash (Map<Map<..>>) to be stored as value.
+
+HSET company name 'Some Co.' since 1915 # equivalent to storing -> ["company": { "name": "Some Co.", "since": "1915" }]
+
+HGET company name # Get the field `name` from the map stored at key `company`
+
+HGETALL company # Get the entire map stored at key `company` --> { "name": "Some Co.", "since": "1915" }
+
+HEXISTS company age # Check if a field `age` exists in the map stored at key `company`.
+
+DEL company # Delete the entire hash stored at key `company`. (Note: No `H` in this command)
+
+HDEL company age # Delete a (`age` in this case) field from the hash stored at the key.
+
+HINCRBY company age 10 # Increment the value of field `age` by 10 in the hash stored at key `company`.
+
+HSTRLEN company name # Get length of the value stored at field `name` in the hash stored at `company`.
+
+HKEYS company # Get all the keys from the hash stored at `company`.
+
+HVALUES company # Get all the values from the hash stored at `company`.
+
+```
