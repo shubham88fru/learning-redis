@@ -85,4 +85,13 @@ SINTER colors:1 colors:2 colors:3 # Get the intersection of the values in sets `
 
 DIFF colors:1 colors:2 colors:3 # Return elements that exist in the first set, but not any others
 
+SINTERSTORE colors:results colors:1 colors:2 colors:3 # Do an intersection of `colors:1`, `colors:2`, and `colors:3` and store results in set `colros:results`
+
+SISIMEMEBER colors:1 red # Return true or false depending on whether the value `red` is or isn't present in the set
+
+SCARD colors:1 # Return the number of elements in set `colors:1`
+
+SREM colors:1 red # Remove value red from set `colors:1`
+
+SSCAN colors:1 0 COUNT 2 # Scan through all the elements in a set. In this case, get 2 elements on page 0.
 ```
