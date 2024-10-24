@@ -3,7 +3,7 @@
 # What is Redis?
 
 - Redis is a database (not just a cache) that is popularly used as a database coz it stores all the data in memory (unlike traditional databases which store it on the disk).
-- Redis is really a a database that stores data in the right datastructure (list, set etc.) such that it makes retreival super fast.
+- Redis is really a database that stores data in the right datastructure (list, set etc.) such that it makes retreival super fast.
 
 ## Data types
 
@@ -68,5 +68,11 @@ HSTRLEN company name # Get length of the value stored at field `name` in the has
 HKEYS company # Get all the keys from the hash stored at `company`.
 
 HVALUES company # Get all the values from the hash stored at `company`.
+
+```
+
+### 4) Set
+
+```redis
 
 ```
