@@ -75,4 +75,14 @@ HVALUES company # Get all the values from the hash stored at `company`.
 
 ```redis
 
+SADD colors red blue # Add values `red` and `blue` to set called `colors`
+
+SMEMEBERS colors # Get all entries of set `colors`
+
+SUNION colors:1 colors:2 colors:3 # Get union of values in sets `colors:1`, `colors:2`, and `colors:3`
+
+SINTER colors:1 colors:2 colors:3 # Get the intersection of the values in sets `colors:1`, `colors:2`, and `colors:3`
+
+DIFF colors:1 colors:2 colors:3 # Return elements that exist in the first set, but not any others
+
 ```
