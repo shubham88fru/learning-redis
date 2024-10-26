@@ -95,3 +95,31 @@ SREM colors:1 red # Remove value red from set `colors:1`
 
 SSCAN colors:1 0 COUNT 2 # Scan through all the elements in a set. In this case, get 2 elements on page 0.
 ```
+
+#### 4.1) Sorted Sets
+
+```redis
+# A mix of a hash and a set. No `keys` and `values`. There are `members`
+# and `scores`.
+
+# `Members` are unique. `Scores` don't have to be unique.
+# `Scores` are sorted from least to greatest.
+
+ZADD products 45 monitor # Adds a member-score pair to a sorted set. In this case, add `score` 45 to a `member` monitor in the sorted set `products`.
+
+ZSCORE products monitor # Get the score of a member. In this case, score of monitor member from the products sorted set.
+
+ZREM products monitor # Remove a member from a sorted set. In this case, remove the member monitor from the sorted set products.
+
+ZCARD prodcuts # Get the number of members in sorted set products.
+
+ZCOUNT products 0 50 # Get the number of members in a sorted set within a range of scores. In this case, memebers with score >= 0 && scores <= 50 from products sorted set.
+
+ZPOPMIN products 2 # Remove and return some number of the lowest score pairs. In this case, remove the 2 entries with lowest scores and return them.
+
+ZPOPMAX products 2 # Remove and return some number of the highest score pairs. In this case, remove the 2 entries with highest scores and return them.
+
+ZINCRBY products 15 keyboard # Adjust a member's score by the given amount. In this case, increment `keyboard`'s score by 15 in the `products` sorted set.
+
+ZRANGE products 15 1 2 # Retrieve a range of members and (optionally) scores (by Adding WITHSCORES at the end). In this case, get all members (not the scores) in range (index) 1 to 2.
+```
