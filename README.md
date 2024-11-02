@@ -122,4 +122,14 @@ ZPOPMAX products 2 # Remove and return some number of the highest score pairs. I
 ZINCRBY products 15 keyboard # Adjust a member's score by the given amount. In this case, increment `keyboard`'s score by 15 in the `products` sorted set.
 
 ZRANGE products 15 1 2 # Retrieve a range of members and (optionally) scores (by Adding WITHSCORES at the end). In this case, get all members (not the scores) in range (index) 1 to 2.
+
+# Sort command operates on `members` not the `score`.
+# Confusingly, the Sort command refers to these members as
+# 'scores' (not members).
+# SORT command works on Sets, Sorted Sets and Lists only.
+
+SORT books:likes ALPHA # Sort the sorted set `books:likes` by the members lexicographically.
+SORT books:likes BY books:*->year # Sort by.
+SORT books:likes BY books:*->year GET books:*->title GET books:*->year
+SORT books:likes BY nosort GET # GET books:*->title GET books:*->year # No sorting. Just Join.
 ```
