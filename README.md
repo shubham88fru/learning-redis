@@ -129,8 +129,11 @@ ZRANGE products 15 1 2 # Retrieve a range of members and (optionally) scores (by
 # SORT command works on Sets, Sorted Sets and Lists only.
 
 SORT books:likes ALPHA # Sort the sorted set `books:likes` by the members lexicographically.
+
 SORT books:likes BY books:*->year # Sort by.
+
 SORT books:likes BY books:*->year GET books:*->title GET books:*->year
+
 SORT books:likes BY nosort GET # GET books:*->title GET books:*->year # No sorting. Just Join.
 ```
 
@@ -144,6 +147,34 @@ SORT books:likes BY nosort GET # GET books:*->title GET books:*->year # No sorti
 # a value was previously added in it.
 
 PFADD vegetables celery # Add a value `celery` in the hyperloglog named `vegetables`.
+
 PFCOUNT vegetables # returns the 'approximate' count of values in the hyperloglog `vegetables`.
+
+```
+
+### 6) Lists
+
+```redis
+LPUSH temps 20 # Insert an element at the left (head) of the list.
+
+RPUSH temps 25 # Insert an element at the right (tail) of the list.
+
+LLEN temps # Get the number of elements in the list.
+
+LINDEX temps 0 # Get the values stored at the provided index. In this case, value at index 0.
+
+LPOS temps 25 # Get the index of a value stored in a list. In this case, index of 25.
+
+LRANGE temps 0 3 # Get values in the range of index 0 to 3.
+
+LPOP temps 2 # Remove and return some number of elemnts from the left (head) of the list. In this case, pop first 2 elements.
+
+RPOP temps 1 # Remove and return some number of elements from the right (tail) of the list. In this case, remove the last element.
+
+LSET temps 2 32 # Change the value stored at the given index. In this case, set value at index 2 to 32.
+
+LINSERT temps BEFORE 25 15 # Insert 15 before the value 25 in the list.
+
+LINSERT temps AFTER 25 15 # Insert 15 after the value 25 in the list.
 
 ```
