@@ -133,3 +133,17 @@ SORT books:likes BY books:*->year # Sort by.
 SORT books:likes BY books:*->year GET books:*->title GET books:*->year
 SORT books:likes BY nosort GET # GET books:*->title GET books:*->year # No sorting. Just Join.
 ```
+
+### 5) HyperLogLog
+
+```redis
+# HyperLogLog is an algorithm for approximately counting the number
+# of unique elements.
+# It's similar to set, but doesn't actually store the elements. It somehow
+# through the use of math and complicated algorithms, just 'remembers' whether or not
+# a value was previously added in it.
+
+PFADD vegetables celery # Add a value `celery` in the hyperloglog named `vegetables`.
+PFCOUNT vegetables # returns the 'approximate' count of values in the hyperloglog `vegetables`.
+
+```
