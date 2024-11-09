@@ -178,3 +178,35 @@ LINSERT temps BEFORE 25 15 # Insert 15 before the value 25 in the list.
 LINSERT temps AFTER 25 15 # Insert 15 after the value 25 in the list.
 
 ```
+
+### 7) Concurrency
+
+#### 7.1) Using atomic commands.
+
+##### 7.2) Using Transactions and Watch.
+
+```redis
+
+# Groups together one or more commands to run sequentially. In redis, transactions are way to
+# write a bunch of commands, and get redis' assurity that all those commands will be run one after the other with
+# no other command (from some other client maybe) running between two commands in the transactions.
+
+# Similar to pipelining, but some big differences - Transactions (in redis) cannot be undone/rolledback/reversed! (unlike other databases.)
+# Template:
+`
+    MULTI # Start a new transaction
+    .
+    .
+    SET COLOR red  # queue up bunch of commands
+    SET COUNT 5
+    .
+    .
+    EXEC # Run all queued commands.
+`
+
+# Watch command - Watch a key. If the value associated to the key
+# has changed somewhere between the watch was set and a new transaction
+# tries to update the same key is started, the transaction will fail and wont proceed.
+
+WATCH color # Watch the key color. Usually written before the start of a transaction.
+```
