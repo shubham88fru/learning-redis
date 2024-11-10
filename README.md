@@ -183,7 +183,7 @@ LINSERT temps AFTER 25 15 # Insert 15 after the value 25 in the list.
 
 #### 7.1) Using atomic commands.
 
-##### 7.2) Using Transactions and Watch.
+#### 7.2) Using Transactions and Watch.
 
 ```redis
 
@@ -209,4 +209,15 @@ LINSERT temps AFTER 25 15 # Insert 15 after the value 25 in the list.
 # tries to update the same key is started, the transaction will fail and wont proceed.
 
 WATCH color # Watch the key color. Usually written before the start of a transaction.
+```
+
+#### 7.3) Using LUA Scripts.
+
+```redis
+# LUA is a scripting language. Redis supports working with LUA scripts.
+# Idea is to write a script, load it in Redis and invoke that script on redis when needed.
+
+SCRIPT LOAD 'return 1+1' # load the script 'return 1 + 1' on the redis server. The redis server stores this script and return an id for the script.
+EVALSHA f17d849ghhabtpq99 0 # Execute the script (with id `f17d849ghhabtpq99`) stored using the above. Once we have the id from above command, we can invoke the script multiple times.
+
 ```
